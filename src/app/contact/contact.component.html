@@ -1,0 +1,76 @@
+<section class="hero is-info is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">Contact Info</h1>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <p class="has-text-centered mb-6 is-family-code">
+            Below is a contact form. Please fill out the required information and then submit.
+            I'll reach back out to you as soon as possible!
+        </p>
+
+        <p class="has-text-centered is-family-code">
+            You can also contact me direcly
+        </p>
+        <p class="has-text-centered mb-6 is-family-code">
+            Email: pwmcbrid@iu.edu | Phone: (812)340-2475S
+        </p>
+
+
+        <!-- Contact form -->
+
+        <p class="has-text-centered has-text-weight-bold is-size-4">
+            Contact Form
+        </p>
+
+
+        <!-- Form information is sent to email pwmcbrid@iu.edu -->
+        <form (ngSubmit)="submitForm()" #contactForm="ngForm" action="https://mailthis.to/pwmcbrid" method="POST" enctype="multipart/form-data">
+            <!-- Name -->
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input type="text" placeholder="Full Name" name="name" class="input" [(ngModel)]="name" #nameInput="ngModel" required>
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-rebel"></i>
+                    </span>
+                </p>
+                <div class="help is-error" *ngIf="nameInput.invalid && nameInput.touched">
+                    Name is required!
+                </div>
+            </div>
+            <!-- Email -->
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input type="email" placeholder="Email Address" name="email" class="input" [(ngModel)]="email" #emailInput="ngModel" required>
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                </p>
+                <div class="help is-error" *ngIf="emailInput.invalid && emailInput.touched">
+                    Email is required!
+                </div>
+            </div>
+            <!-- message -->
+            <div class="field">
+                <label class="label">Message</label>
+                <p class="control has-icons-left">
+                    <textarea name="message" class="textarea" [(ngModel)]="message" #messageInput="ngModel" required></textarea>
+                </p>
+                <div class="help is-error" *ngIf="messageInput.invalid && messageInput.touched">
+                    Message is required!
+                </div>
+            </div>
+            <!-- submit button -->
+            <button type="submit" class="button has-background-success-dark has-text-white is-warning" [disabled]="contactForm.invalid">
+                Submit
+            </button>
+
+        </form>
+
+    </div>
+</section>
